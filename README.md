@@ -8,7 +8,7 @@ update this as needed then you just download the setting you want
 
 #### Examples:
 ```shell
-curl -O https://github.com/ondrovic/vscode/.vscode/commands.json
+curl -o .vscode/commands.json https://raw.githubusercontent.com/ondrovic/vscode/master/.vscode/commands.json
 ```
 
 
