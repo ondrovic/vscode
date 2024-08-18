@@ -7,6 +7,8 @@
 # Include the .vscode directory and its contents
 !.vscode/
 !.vscode/**
+!makefiles/
+!makefiles/**
 
 # (Optionally) Include any other specific files you want
 !README.md
