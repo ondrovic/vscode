@@ -9,8 +9,10 @@
 !.vscode/**
 !makefiles/
 !makefiles/**
+!.github/
+!.github/**
 
 # (Optionally) Include any other specific files you want
 !README.md
 !LICENSE
-
+!generate_config.sh
