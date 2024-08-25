@@ -19,3 +19,6 @@
 # Include all directories recursively
 !*/
 !**/
+
+# Include TODO
+!TODO
