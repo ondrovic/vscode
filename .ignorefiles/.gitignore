@@ -7,18 +7,10 @@
 # Include the .vscode directory and its contents
 !.vscode/
 !.vscode/**
-!.makefiles/
-!.makefiles/**
-!.ignorefiles/
-!.ignorefiles/**
-!.licensefiles/
-!.licensefiles/**
-!.readmefiles/
-!.readmefiles/**
+!makefiles/
+!makefiles/**
 !.github/
 !.github/**
-!.workflows/
-!.workflows/**
 
 # (Optionally) Include any other specific files you want
 !README.md
