@@ -23,6 +23,12 @@
       "command": "markdown.showPreviewToSide",
       "tooltip": "Open markdown preview",
       "filterFileRegex": ".*\\.md"
+    },
+    {
+      "text": "</>",
+      "command": "html.showLockedPreviewToSide",
+      "tooltip": "Open html preview",
+      "filterFileRegex": ".*\\.htm*"
     }
   ]
 }
