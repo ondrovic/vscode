@@ -4,6 +4,8 @@ project_name: PLACEHOLDER # rename
 
 env:
  - GO_MAIN_PATH=PLACEHOLDER # setup to your main path
+ - VERSION_PATH=PLACEHOLDER # setup to your version path
+
 
 before:
   hooks:
@@ -21,7 +23,9 @@ builds:
       - windows
     goarch:
       - amd64
-    ldflags: -s -w
+    ldflags:
+      - -s -w
+      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
 
   - id: linux
     main: '{{ .Env.GO_MAIN_PATH }}'
@@ -31,7 +35,9 @@ builds:
       - linux
     goarch:
       - amd64
-    ldflags: -s -w
+    ldflags:
+      - -s -w
+      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
 
   - id: macos
     main: '{{ .Env.GO_MAIN_PATH }}'
@@ -41,7 +47,9 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w
+    ldflags:
+      - -s -w
+      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
 
 archives:
   - format: tar.gz

@@ -5,6 +5,8 @@ project:
     env:
       GO_MAIN_PATH:
         ☐ replace PLACEHOLDER with actual path
+      VERSION_PATH:
+        ☐ replace PLACEHOLDER with acutual path
   readme.md:
     ☐ update based on relevant project info
   testing:
