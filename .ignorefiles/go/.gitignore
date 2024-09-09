@@ -9,6 +9,10 @@
 
 # But not these files...
 !/.gitignore
+!.gitkeep
+
+!.github/
+!.github/**/*
 
 !*.go
 !go.sum
@@ -18,6 +22,7 @@
 !LICENSE
 
 !Makefile
-
+!TODO
+!goreleaser.yaml
 # ...even if they are in subdirectories
 !*/
