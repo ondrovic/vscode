@@ -29,6 +29,20 @@
       "command": "html.showLockedPreviewToSide",
       "tooltip": "Open html preview",
       "filterFileRegex": ".*\\.htm*"
+    },
+    {
+      "text": "$(json)",
+      "command": "vscode-json-editor.start",
+      "tooltip": "Open JSON Editor",
+      "color": "#ff6188",
+      "fileFilterRegex": ".*\\.json*"
+    },
+    {
+      "text": "$(json)",
+      "command": "explorer.openWith",
+      "tooltip": "Open JSON Grid",
+      "color": "#78dce8",
+      "fileFilterRegex": ".*\\.json*"
     }
   ]
 }
