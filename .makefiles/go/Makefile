@@ -1,9 +1,7 @@
 export GO111MODULE=on
 GOOS := $(shell go env GOOS)
-VERSION := $(shell git describe --tags --always)
-BUILD_FLAGS := -ldflags="-X 'main.version=$(VERSION)'"
 # update to main app path
-#APP_PATH := 
+APP_PATH := PLACEHOLDER
 
 # determins the variables based on GOOS 
 ifeq ($(GOOS), windows)
@@ -11,12 +9,23 @@ ifeq ($(GOOS), windows)
 	HOME = $(shell echo %USERPROFILE%)
 	CONFIG_PATH = $(subst  ,,$(HOME)\.golangci.yaml)
 	OUTPUT_PATH = C:\cli-tools
+	DATE=$(shell powershell -Command "(Get-Date).ToString('yyyy-MM-ddTHH:mm:sszzz')")
+	DIRTY=$(shell powershell -Command "if (git status --porcelain) { echo true } else { echo false }")
 else
     RM = rm -f
 	HOME = $(shell echo $$HOME)
 	CONFIG_PATH = $(HOME)/.golangci.yaml
 	OUTPUT_PATH = /usr/local/bin
+	DATE=$(shell date +"%Y-%m-%dT%H:%M:%S%z")
+	DIRTY=$(shell git status --porcelain | grep . > /dev/null && echo true || echo false)
 endif
+
+GO_BUILD_LDFLAGS=\
+  -X go.szostok.io/version.version=$(shell git describe --tags --always) \
+  -X go.szostok.io/version.commit=$(shell git rev-parse --short HEAD) \
+  -X go.szostok.io/version.buildDate=$(DATE) \
+  -X go.szostok.io/version.commitDate=$(shell git log -1 --date=format:"%Y-%m-%dT%H:%M:%S%z" --format=%cd) \
+  -X go.szostok.io/version.dirtyBuild=$(DIRTY)
 
 check-quality:
 	@make tidy
@@ -53,7 +62,8 @@ coverage:
 	go tool cover -html=coverage.out -o coverage.html
 
 build: 
-	go build $(BUILD_FLAGS) -o $(OUTPUT_PATH) $(APP_PATH)
+	go build -ldflags="$(GO_BUILD_LDFLAGS)" -o $(OUTPUT_PATH) $(APP_PATH)
+.PHONY: build
 
 all:
 	make check-quality

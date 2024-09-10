@@ -4,7 +4,6 @@ project_name: PLACEHOLDER # rename
 
 env:
  - GO_MAIN_PATH=PLACEHOLDER # setup to your main path
- - VERSION_PATH=PLACEHOLDER # setup to your version path
 
 
 before:
@@ -25,7 +24,11 @@ builds:
       - amd64
     ldflags:
       - -s -w
-      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
+      - -X go.szostok.io/version.version={{.Version}}
+      - -X go.szostok.io/version.buildDate={{.Date}}
+      - -X go.szostok.io/version.commit={{.FullCommit}}
+      - -X go.szostok.io/version.commitDate={{.CommitDate}}
+      - -X go.szostok.io/version.dirtyBuild={{.IsGitDirty}}
 
   - id: linux
     main: '{{ .Env.GO_MAIN_PATH }}'
@@ -37,7 +40,11 @@ builds:
       - amd64
     ldflags:
       - -s -w
-      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
+      - -X go.szostok.io/version.version={{.Version}}
+      - -X go.szostok.io/version.buildDate={{.Date}}
+      - -X go.szostok.io/version.commit={{.FullCommit}}
+      - -X go.szostok.io/version.commitDate={{.CommitDate}}
+      - -X go.szostok.io/version.dirtyBuild={{.IsGitDirty}}
 
   - id: macos
     main: '{{ .Env.GO_MAIN_PATH }}'
@@ -49,7 +56,11 @@ builds:
       - amd64
     ldflags:
       - -s -w
-      - -X '{{.Env.VERSION_PATH}}={{.Tag}}'
+      - -X go.szostok.io/version.version={{.Version}}
+      - -X go.szostok.io/version.buildDate={{.Date}}
+      - -X go.szostok.io/version.commit={{.FullCommit}}
+      - -X go.szostok.io/version.commitDate={{.CommitDate}}
+      - -X go.szostok.io/version.dirtyBuild={{.IsGitDirty}}
 
 archives:
   - format: tar.gz
