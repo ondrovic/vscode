@@ -23,3 +23,6 @@
 
 # Include TODO
 !TODO
+
+# Include .GO
+!*.go
