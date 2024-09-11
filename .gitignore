@@ -24,5 +24,8 @@
 # Include TODO
 !TODO
 
+# Include Makefile
+!Makefile
+
 # Include .GO
 !*.go
