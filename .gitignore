@@ -27,5 +27,8 @@
 # Include Makefile
 !Makefile
 
+# Include commands.json
+!commands.json
+
 # Include .GO
 !*.go
