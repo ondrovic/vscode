@@ -30,5 +30,8 @@
 # Include commands.json
 !commands.json
 
+# Include .yml files
+!*.yml
+
 # Include .GO
 !*.go
