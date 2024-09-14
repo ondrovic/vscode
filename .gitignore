@@ -17,6 +17,10 @@
 !*/
 !**/
 
+# Exclude .vscode folder
+.vscode/
+.vscode/*
+
 # Include TODO
 !TODO
 
