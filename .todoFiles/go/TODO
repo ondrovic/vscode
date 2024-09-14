@@ -4,6 +4,7 @@ project:
   version.go:
     ☐ replace all PLACEHOLDER values
     ☐ remove // NOTE:
+    ☐ move to cli / cmd location
   goreleaser.yaml:
     project_name:
       ☐ replace PLACEHOLDER with actual name
