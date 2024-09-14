@@ -1,11 +1,14 @@
 name: testing
 
 on:
-  pull_request:
   push:
-    branches: [master]
-    tags-ignore: 
-      - '*'  # Ignores all tag names
+    branches:
+      - "**" # Match all branches
+    tags-ignore:
+      - "*" # Ignore all tags
+  pull_request:
+    branches:
+      - "**" # Match all branches
 
 jobs:
   testing:
