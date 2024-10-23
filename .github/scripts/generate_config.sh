@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ISSUE_TEMPLATE_CREATED_FILE=".github/ISSUE_TEMPLATE/issue_template_configured.txt"
+TEMPLATE_FILE=".github/ISSUE_TEMPLATE/config.template.yml"
+OUTPUT_FILE=".github/ISSUE_TEMPLATE/config.yml"
 
 # Check if the repository name is provided
 if [ -z "$1" ]; then
@@ -8,20 +10,22 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-# Check if the script has already run
-if [ -f "$FLAG_FILE" ]; then
+# Capture the repository name
+REPO="$1"
+
+# Check if the config has already been generated
+if [ -f "$ISSUE_TEMPLATE_CREATED_FILE" ]; then
   echo "Config has already been generated."
   exit 0
 fi
 
-REPO=$1
-TEMPLATE_FILE=".github/ISSUE_TEMPLATE/config.template.yml"
-OUTPUT_FILE=".github/ISSUE_TEMPLATE/config.yml"
+# Ensure the output directory exists
+mkdir -p "$(dirname "$OUTPUT_FILE")"
 
-# Replace placeholder with actual repository name
-sed "s/{REPO}/$REPO/g" $TEMPLATE_FILE > $OUTPUT_FILE
+# Replace placeholder {REPO} with the actual repository name
+sed "s|{REPO}|$REPO|g" "$TEMPLATE_FILE" > "$OUTPUT_FILE"
 
-# Create a file with a timestamp to indicate the script has run
+# Create a file to indicate the script has run, with a timestamp
 echo "Config generated for repository: $REPO on $(date '+%Y-%m-%d %H:%M:%S')" > "$ISSUE_TEMPLATE_CREATED_FILE"
 
 echo "Generated config.yml for repository: $REPO"
