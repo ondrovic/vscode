@@ -17,6 +17,10 @@
 !*/
 !**/
 
+# Include ISSUE_TEMPLATE files
+!*/ISSUE_TEMPLATE/*.md
+!**/ISSUE_TEMPLATE/*.md
+
 # Exclude .vscode folder
 .vscode/
 .vscode/*
